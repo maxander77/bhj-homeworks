@@ -11,3 +11,9 @@
   color: #fff;
 }
 
+.status__timer {
+  font-size: 24px;
+  font-weight: bold;
+  color: red;
+  margin-top: 10px;
+}
