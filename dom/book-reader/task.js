@@ -26,8 +26,8 @@ switchA.forEach(element => {
   element.addEventListener('click', switchBtn);
 });
 
-const textColors = document.querySelectorAll('.text_color');
-const bgColors = document.querySelectorAll('.bg_color');
+const textColors = document.querySelectorAll('.book__control_color');
+const bgColors = document.querySelectorAll('.book__control_background');
 
 function switchColor(event) {
   event.preventDefault();
