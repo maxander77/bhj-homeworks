@@ -15,7 +15,6 @@ class Game {
     this.setNewWord();
     this.winsElement.textContent = 0;
     this.lossElement.textContent = 0;
-    this.timerElement.textContent = '10'; 
     clearInterval(this.timer); 
   }
 
@@ -60,9 +59,10 @@ class Game {
 
   setNewWord() {
     const word = this.getWord();
+    const wordLength = word.length;
 
     this.renderWord(word);
-    this.startTimer();
+    this.startTimer(wordLength);
   }
 
   getWord() {
@@ -96,8 +96,8 @@ class Game {
     this.currentSymbol = this.wordElement.querySelector('.symbol_current');
   }
 
-  startTimer() {
-    let timeLeft = parseInt(this.timerElement.textContent, 10);
+  startTimer(wordLength) {
+    let timeLeft = wordLength;
 
     this.timer = setInterval(() => {
       timeLeft--;
