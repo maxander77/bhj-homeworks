@@ -111,7 +111,7 @@ class Game {
       }
     }, 1000);
   }
-
+  
   stopTimer() {
     clearInterval(this.timer);
     this.timerElement.textContent = this.wordElement.textContent.length;
