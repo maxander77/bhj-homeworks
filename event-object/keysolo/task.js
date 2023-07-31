@@ -19,7 +19,7 @@ class Game {
   }
 
   registerEvents() {
-    document.addEventListener('keyup', (event) => {
+    document.addEventListener('keydown', (event) => {
       const enteredSymbol = event.key;
 
       if (enteredSymbol.toLowerCase() === this.currentSymbol.textContent.toLowerCase()) {
@@ -44,8 +44,8 @@ class Game {
       alert('Победа!');
       this.reset();
     }
-    this.stopTimer();
-    this.setNewWord();
+      this.stopTimer();
+      this.setNewWord();
   }
 
   fail() {
@@ -53,8 +53,8 @@ class Game {
       alert('Вы проиграли!');
       this.reset();
     }
-    this.stopTimer();
-    this.setNewWord();
+      this.stopTimer();
+      this.setNewWord();
   }
 
   setNewWord() {
@@ -98,6 +98,7 @@ class Game {
 
   startTimer(wordLength) {
     let timeLeft = wordLength;
+    this.timerElement.textContent = timeLeft;
 
     this.timer = setInterval(() => {
       timeLeft--;
@@ -113,7 +114,7 @@ class Game {
 
   stopTimer() {
     clearInterval(this.timer);
-    this.timerElement.textContent = '10';
+    this.timerElement.textContent = this.wordElement.textContent.length;
   }
 }
 
