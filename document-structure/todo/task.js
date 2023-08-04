@@ -5,7 +5,9 @@ const taskList = document.getElementById('tasks__list');
 btn.addEventListener('click', (event) => {
   event.preventDefault();
 
-  const taskText = inputField.value;
+  const taskText = inputField.value.trim();
+
+  if (taskText !== '') {
   const newTask = document.createElement('div');
   newTask.classList.add('task');
 
@@ -28,5 +30,5 @@ btn.addEventListener('click', (event) => {
 
   inputField.value = '';
  
-
-})
+ }
+});
