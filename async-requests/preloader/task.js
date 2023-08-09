@@ -7,12 +7,14 @@ xhr.addEventListener('readystatechange', () => {
     if (xhr.status === 200) {
       loader.classList.remove('loader_active');
 
-      const response = JSON.parse(xhr.responseText);
+      const jsonResponse = JSON.parse(xhr.responseText);
       const itemsContainer = document.getElementById('items');
       itemsContainer.innerHTML = '';
 
-      for (const code in response) {
-        const itemData = response[code];
+      const valuteData = jsonResponse.response.Valute;
+
+      for (const code in valuteData) {
+        const valute = valuteData[code];
 
         const itemDiv = document.createElement('div');
         itemDiv.classList.add('item');
@@ -23,7 +25,7 @@ xhr.addEventListener('readystatechange', () => {
 
         const valueDiv = document.createElement('div');
         valueDiv.classList.add('item__value');
-        valueDiv.textContent = itemData;
+        valueDiv.textContent = valute.Value;
 
         const currencyDiv = document.createElement('div');
         currencyDiv.classList.add('item__currency');
