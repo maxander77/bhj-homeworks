@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     xhr.upload.addEventListener('progress', (event) => {
       if (event.lengthComputable) {
-        const progress = (event.loaded / event.total) * 100;
+        const progress = (event.loaded / event.total);
         progressBar.value = progress;
       }
     });
