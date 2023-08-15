@@ -1,3 +1,15 @@
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.card {
+  border: 3px solid #06f;
+  padding: 10px 50px;
+}
+
 .signin {
   display: none;
 }
@@ -35,6 +47,13 @@
   white-space: nowrap;
   font-weight: 500;
   box-shadow: none;
+}
+
+.btn:hover {
+  background: #fff;
+  border: 1px solid #06f;
+  color: #06f;
+  transition: 0.5s;
 }
 
 .welcome {
