@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const welcome = document.getElementById('welcome');
   const signinBtn = document.getElementById('signin__btn');
   const userId = document.getElementById('user_id');
+  const editor = document.getElementById('editor'); 
 
   const getUserId = localStorage.getItem('userId');
   if (getUserId) {
@@ -20,31 +21,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const login = loginInputs[0].value;
     const password = passwordInputs[0].value; 
     
-
     const formData = new FormData();
     formData.append('login', login);
-    formData.append('password', password);
+    formData.append('password', password); 
 
-    const xhr = new XMLHttpRequest();
-  
-    xhr.addEventListener('readystatechange', () => {
-      if (xhr.readyState === xhr.DONE) {
+    try {
+      const xhr = new XMLHttpRequest();
+
+      xhr.addEventListener('load', () => {
         if (xhr.status === 200) {
-          const data = JSON.parse(xhr.responseText);
+          const data = xhr.response;
           
           localStorage.setItem('userId', data.id);
 
           welcome.classList.add('welcome_active');
           userId.textContent = data.id;
+          
+          form.reset();
         } else {
           console.error('Error');
         }
-      }
-    });
+      });
 
-    xhr.open('POST', 'https://students.netoservices.ru/nestjs-backend/auth');
-    xhr.send(formData);
+      xhr.responseType = 'json';
+
+      xhr.open('POST', 'https://students.netoservices.ru/nestjs-backend/auth');
+      xhr.send(formData);
+    } catch (error) {
+      console.error('An error occurred:', error);
+    }
   });
+
+  editor.addEventListener('input', () => {
+    localStorage.setItem('editorContent', editor.value);
+  });
+
+  const savedText = localStorage.getItem('editorContent');
+  editor.value = savedText;
 });
-
-
