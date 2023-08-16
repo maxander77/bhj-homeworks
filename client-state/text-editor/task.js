@@ -6,7 +6,5 @@ editor.addEventListener('input', () => {
 
 window.addEventListener('load', () => {
   const savedText = localStorage.getItem('editorContent');
-  if (savedText) {
     editor.value = savedText;
-  }
 });
